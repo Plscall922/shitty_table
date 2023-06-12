@@ -63,6 +63,15 @@ class GenerateFuckingTable:
         column_letter = column_index.upper()
         tables.column_dimensions[column_letter].width = max_width
 
+        fill = PatternFill(fill_type="solid", fgColor="FF0000")  # Red color
+
+        # Iterate over the cells in the column and apply the fill color
+        for column in tables.iter_cols():
+            for cell in column:
+                if isinstance(cell.value, int):
+                    if cell.value <= 5000:
+                        cell.fill = fill
+
 
 
     def execute(self):
